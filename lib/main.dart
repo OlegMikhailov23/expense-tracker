@@ -23,7 +23,7 @@ void main() {
           backgroundColor: kDarkColorScheme.onPrimaryContainer,
           foregroundColor: kDarkColorScheme.primaryContainer,
         ),
-        cardTheme: CardTheme().copyWith(
+        cardTheme: const CardTheme().copyWith(
           color: kDarkColorScheme.secondaryContainer,
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         ),
@@ -50,7 +50,7 @@ void main() {
                   fontSize: 16),
             ),
       ),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       home: const Expenses(),
     ),
   );

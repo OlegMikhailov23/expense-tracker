@@ -45,7 +45,7 @@ class _NewExpenseState extends State<NewExpense> {
       if (Platform.isIOS) {
         showCupertinoDialog(
             context: context,
-            builder: (ctx) => AlertDialog(
+            builder: (ctx) => CupertinoAlertDialog(
                   title: const Text('Invalid input'),
                   content: const Text(
                       'Please make sure a valid title, amount, date and category was entered'),

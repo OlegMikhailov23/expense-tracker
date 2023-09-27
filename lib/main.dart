@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 
 import 'package:expense_tracker/widgets/expenses.dart';
+import 'package:sembast/sembast.dart';
 
 var kColorScheme =
     ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 96, 59, 181));
@@ -10,6 +11,10 @@ var kColorScheme =
 var kDarkColorScheme = ColorScheme.fromSeed(
     brightness: Brightness.dark,
     seedColor: const Color.fromARGB(255, 5, 99, 125));
+
+// final dbHelper = DatabaseHelper();
+
+final store = intMapStoreFactory.store('expenses_prod');
 
 void main() {
   // Use this for locking some orientation

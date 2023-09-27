@@ -80,6 +80,7 @@ class _NewExpenseState extends State<NewExpense> {
     }
 
     widget.onAddExpense(Expense(
+        id: uuid.v4(),
         title: _titleController.text,
         amount: enteredamount,
         date: _selectedDate!,

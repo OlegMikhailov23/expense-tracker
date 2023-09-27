@@ -15,13 +15,29 @@ const categoryIcons = {
   Category.travel: Icons.airport_shuttle,
 };
 
+Category categoryFromString(String categoryString) {
+  switch (categoryString) {
+    case 'Category.food':
+      return Category.food;
+    case 'Category.travel':
+      return Category.travel;
+    case 'Category.leisure':
+      return Category.leisure;
+    case 'Category.work':
+      return Category.work;
+    default:
+      throw ArgumentError('Invalid category string: $categoryString');
+  }
+}
+
 class Expense {
   Expense({
+    required this.id,
     required this.title,
     required this.amount,
     required this.date,
     required this.category,
-  }) : id = uuid.v4();
+  });
 
   final String id;
   final String title;
@@ -31,6 +47,28 @@ class Expense {
 
   String get formatedDate {
     return formatter.format(date);
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'amount': amount,
+      'date': date.toIso8601String(),
+      'category': category.toString(),
+    };
+  }
+
+  factory Expense.fromMap(Map<String, dynamic> map) {
+    final categoryString = map['category'];
+    final category = categoryFromString(categoryString);
+    return Expense(
+      id: map['id'] as String,
+      title: map['title'] as String,
+      amount: map['amount'] as double,
+      date: DateTime.parse(map['date'] as String),
+      category: category,
+    );
   }
 }
 
